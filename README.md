@@ -8,7 +8,7 @@ The dining philosphers is an example problem often used in concurrent (The abili
 (This section is not important for the project, but I felt the need to understand how the CPU works before proceeding with working with threads; My research based on this<a href="https://insights.sei.cmu.edu/blog/multicore-processing/"> article</a>)
 #### Multicore CPU
 <br>
-<img src = "./learning_material/multicore_cpu.png">
+<img src = "./learning_materials/imgs/multicore_cpu.png">
 <br>
 A multicore CPU is a single integrated circuit that contains multiple core processing units. CPUs differ according to these traits:
 <ul>
@@ -23,9 +23,7 @@ A multicore CPU is a single integrated circuit that contains multiple core proce
 <li>Isolation: includes Physical isolation (different cores cannot access the same physical hardware) and temporal isolation (insures that the execution of software on one core, does not impact the behavior of software running on another core)</li>
 </ul>
 
-#### Multithreading
-Multithreading is the ability of a single core in a CPU to provide multiple threads of execution concurrently. 
-### - Threads 
+### - POSIX Threads (pthread s)
 Page 617 in Linux api book
 ### - Plan of work
 <a href="http://www.crockford.com/ec/dining.html"> Dijkstra's solution </a>; Resource hierarchy solution; arbitrator solution; Chandy/Misra solution
@@ -36,3 +34,5 @@ Page 617 in Linux api book
 <li>Put the left fork then the right fork down</li>
 <li>Repeat the process</li>
 </ul>
+
+### Allowed functions
