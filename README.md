@@ -29,7 +29,7 @@ Pthreads or Posix threads are a mechanism that permits an application to perform
 Threads execute the program independently though they share the same global memory. (A traditional unix process is a simple case of multithreaded processes; it is a process that contains just one thread).
 The threads in a process can execute concurrently, or parallelly in a multiprocessor system, 
 <img src="./learning_materials/imgs/pthreads_virtual_memory.png">
-
+Each thread withing a process is uniquely identified by a thread ID, this ID is returned to the call
 ##### - Thread creation
 
 When a program is started, the resulting process consists of a single thread, called the initial or main thread. 
@@ -39,9 +39,8 @@ The pthread_crate() function creates a new thread.
 ##### - Thread termination
 
 The execution of a thread terminates in one of the following ways: 
-<ul>
-<li>The thread calls </li>
-</ul>
+<img src="./learning_materials/imgs/pthreads_termination.png">
+A threads also terminates after any of the threads calling the exit() function or the main thread 
 ##### - Threads vs processes
 
 ##### - Thread synchronization

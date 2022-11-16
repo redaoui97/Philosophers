@@ -3,3 +3,4 @@ Make project layout
 Experiment pthread functions:
 +Try exiting main thread with 1 running thread
 +Try exiting main thread with more than 1 thread running
++Try pthread_self()
