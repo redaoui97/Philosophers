@@ -65,6 +65,19 @@ One of the principal advantages of threads is that they can share information vi
 Critical section execution should be atomic (When an atomic store is performed on a shared variable, no other thread can observe the modification half-complete)
 Threaded applications must employ synchronization primitives such as mutexes and condition variabels in order to coordinate acces to shared variables.
 ###### - Mutexes
+Mutex short for mutual exclusion, is used to ensure that only one thread at a time can acess the variable.
+A mutex has 2 states: locked (aqcuired) or unlocked (released).
+When a thread lockes a mutex, it becomes the owner of that mutex. Only the mutex owner can unlock the mutex.
+In general, we employ a different mutex for each shared resource, and each thread employs the following protocols for accessing ressources:
+<ol>
+<li>Lock the mutex</li>
+<li>Access the shared resource</li>
+<li>Unlock the mutex</li>
+</ol> 
+
+<li>Allocating Mutexes</li>
+A mutex can either be allocated as a static variable or dynamically at run time via malloc.
+A mutex of the type pthread_mutex_t must always be initialized using pthread_mutex_init. After initialization, a mutex is unlocked. To lock or unluck a mutex, we use pthread_mutex_lock() & pthread_mutex_unluck() functions.
 
 ### - Semaphores
 
