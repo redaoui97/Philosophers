@@ -77,7 +77,7 @@ In general, we employ a different mutex for each shared resource, and each threa
 
 <li>Allocating Mutexes</li>
 A mutex can either be allocated as a static variable or dynamically at run time via malloc.
-A mutex of the type pthread_mutex_t must always be initialized using pthread_mutex_init. After initialization, a mutex is unlocked. To lock or unluck a mutex, we use pthread_mutex_lock() & pthread_mutex_unluck() functions.
+A mutex of the type pthread_mutex_t must always be initialized using pthread_mutex_init. After initialization, a mutex is unlocked. To lock or unlock a mutex, we use pthread_mutex_lock() & pthread_mutex_unlock() functions.
 
 ### - Semaphores
 
