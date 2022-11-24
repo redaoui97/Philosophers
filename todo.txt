@@ -5,4 +5,5 @@ Experiment pthread functions:
 +Try pthread_self()
 +Run infinite loop on a thread and don't join with main thread
 +Test exit on thread and detached threads
-+
+//organize files inside directories 
+//init philo state arg with 0
