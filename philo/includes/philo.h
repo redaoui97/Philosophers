@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/23 20:38:44 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:29:13 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,18 @@ typedef struct s_philo
 	int			meals_eaten;
 	long long	last_time_ate;
 	pthread_t	thread_id;
+	t_philo		*first_philo;
+	t_philo		*next_philo;
+	t_philo		*previous_philo;
 } t_philo;
-/*Error functions*/
-void    fatal_error (char *msg);
+
+/*Initializations functions*/
+int initialize_data(int argc, char **argv, t_data *data);
 
 /*Philosophers utils functions*/
+
+/*Error functions*/
+void    fatal_error (char *msg);
 
 /*Utils functions*/
 int     ft_strlen(char *str);

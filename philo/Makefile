@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+         #
+#    By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 16:21:43 by rnabil            #+#    #+#              #
-#    Updated: 2022/11/23 12:35:45 by rnabil           ###   ########.fr        #
+#    Updated: 2022/11/24 12:51:43 by rnabil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Main_functions = $(addprefix src/, main errors philo philo_utils utils)
+Main_functions = $(addprefix src/, main errors philo philo_utils utils initializations)
 OBJS_main = $(Main_functions:=.o)
 
 NAME  = philo
