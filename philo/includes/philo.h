@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/24 20:05:33 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/25 10:39:48 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				max_meals;
+	long long		program_start_time;
 	struct s_philo	*philos;
 } t_data;
 
@@ -49,6 +50,7 @@ typedef struct s_philo
 	int					meals_eaten;
 	bool				fork_used;
 	enum state			state;
+	long long			birth_time;
 	long long			last_time_ate;
 	pthread_t			thread_id;
 	struct s_philo		*first_philo;
@@ -61,17 +63,24 @@ typedef struct s_philo
 /*----------------------------------------*/
 
 /*Initializations functions*/
-t_philo	*initialize_philos(int nbr_philos);
-void	test_initialized_data(t_philo *philos, int nbr_philos);
-int 	initialize_data(int argc, char **argv, t_data *data);
+t_philo		*initialize_philos(int nbr_philos);
+void		test_initialized_data(t_philo *philos, int nbr_philos);
+int 		initialize_data(int argc, char **argv, t_data *data);
+void		pthread_initialization(t_data *data);
+
+/*Philosophers action functions*/
+void		*life_cycle(void *data);
 
 /*Philosophers utils functions*/
+long long	get_time(void);
+long long	get_current_time(t_data *data);
 
 /*Error functions*/
-void	fatal_error (char *msg);
+void		fatal_error (char *msg);
 
 /*Utils functions*/
-int		ft_strlen(char *str);
-char	*ft_strcat(char *str1, char *str2);
-int		ft_atoi(const char *str);
+int			ft_strlen(char *str);
+char		*ft_strcat(char *str1, char *str2);
+int			ft_atoi(const char *str);
+
 #endif

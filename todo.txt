@@ -1,4 +1,3 @@
-Make project layout
 Experiment pthread functions:
 +Try exiting main thread with 1 running thread
 +Try exiting main thread with more than 1 thread running
@@ -6,4 +5,4 @@ Experiment pthread functions:
 +Run infinite loop on a thread and don't join with main thread
 +Test exit on thread and detached threads
 //organize files inside directories 
-//init philo state arg with 0
+//gettimeofday and milisecond vs microsecond
