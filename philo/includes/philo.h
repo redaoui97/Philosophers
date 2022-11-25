@@ -6,18 +6,18 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/24 18:59:06 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/24 20:05:33 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-#include <pthread.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <stdbool.h>
+#include <pthread.h>
 #include <sys/time.h>
 
 /*----------------------------------------*/
@@ -26,9 +26,11 @@
 
 enum state
 {
+	idle,
 	eating,
 	thinking,
-	sleeping
+	sleeping,
+	dead
 };
 
 typedef struct s_data
@@ -44,8 +46,9 @@ typedef struct s_data
 typedef struct s_philo
 {
     int					id;
-	enum state			state;
 	int					meals_eaten;
+	bool				fork_used;
+	enum state			state;
 	long long			last_time_ate;
 	pthread_t			thread_id;
 	struct s_philo		*first_philo;

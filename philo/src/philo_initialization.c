@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 18:27:29 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/24 18:47:38 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/24 20:04:26 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void initialize_single_philo(t_philo *philo, int id, int meals_eaten, t_p
     philo->id = id;
     philo->meals_eaten = meals_eaten;
     philo->first_philo = first_philo;
+    philo->fork_used = false;
+    philo->state = idle;
 }
 
 t_philo *initialize_philos(int nbr_philos)

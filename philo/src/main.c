@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:35:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/24 18:35:50 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/24 19:16:36 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	main(int argc, char **argv)
     //function that initializes data args
 	if (!initialize_data(argc, argv, &data) == EXIT_SUCCESS)
 		fatal_error("Program failed to initialize data!\n");
-	test_initialized_data(data.philos, data.nbr_philos);
+	//initialize mutexes
+	//initialize threads
+	//detach threads
+	//main thread monitoring
+	//free data and destroy mutexes
 	return (0);
 }
