@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 11:34:30 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 16:28:21 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 	long long		last_time_ate;
 	pthread_t		thread_id;
 	pthread_mutex_t	*fork_lock;
+	struct s_data	*data;
 	struct s_philo	*first_philo;
 	struct s_philo	*next_philo;
 	struct s_philo	*previous_philo;
@@ -63,9 +64,9 @@ typedef struct s_philo
 /*----------------------------------------*/
 
 /*Initializations functions*/
-t_philo		*initialize_philos(int nbr_philos);
+t_philo		*initialize_philos(int nbr_philos, t_data *data);
 void		test_initialized_data(t_philo *philos, int nbr_philos);
-int 		initialize_data(int argc, char **argv, t_data *data);
+void		initialize_data(int argc, char **argv, t_data *data);
 void		pthread_initialization(t_data *data);
 void		detach_threads(t_data *data);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 11:29:19 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 17:42:41 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	pthread_initialization(t_data *data)
 	philo = data->philos;
 	while (i < data->nbr_philos)
 	{
-		if (pthread_create(&(philo->thread_id), NULL, life_cycle, data))
+		if (pthread_create(&(philo->thread_id), NULL, life_cycle, philo))
 			fatal_error("Thread creation error!\n");
 		usleep(100);
 		philo = philo->next_philo;
@@ -59,12 +59,11 @@ void	detach_threads(t_data *data)
 	}
 }
 
-int initialize_data(int argc, char **argv, t_data *data)
+void	initialize_data(int argc, char **argv, t_data *data)
 {
 	initialize_data_attributs(argc, argv, data);
-	data->philos = initialize_philos(data->nbr_philos);
+	data->philos = initialize_philos(data->nbr_philos, data);
 	pthread_initialization(data);
 	detach_threads(data);
-    return (EXIT_SUCCESS);
 }
 

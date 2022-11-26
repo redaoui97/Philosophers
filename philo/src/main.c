@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:35:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 11:38:16 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 16:27:58 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 5 && argc != 6)
 		fatal_error ("Invalid arguments: invalid number of arguments\n");
-	if (!initialize_data(argc, argv, &data) == EXIT_SUCCESS)
-		fatal_error("Program failed to initialize data!\n");
+	initialize_data(argc, argv, &data);
 	monitoring(&data);
 	destroy_data(&data);
 	return (0);
