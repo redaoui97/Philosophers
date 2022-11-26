@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/25 10:46:33 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 10:48:10 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	pthread_initialization(t_data *data)
 		philo = philo->next_philo;
 		i++;
 	}
+}
+
+void	detach_threads(t_data *data)
+{
+	(void)data;
 }
 
 int initialize_data(int argc, char **argv, t_data *data)

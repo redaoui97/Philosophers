@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:35:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/25 10:41:52 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:12:43 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	main(int argc, char **argv)
 		fatal_error("Program failed to initialize data!\n");
 	//detach threads
 	//main thread monitoring
-	//free data and destroy mutexes
+	destroy_data(&data);
 	return (0);
 }

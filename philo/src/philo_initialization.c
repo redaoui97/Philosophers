@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 18:27:29 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/24 20:04:26 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:08:45 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,23 @@ static void initialize_single_philo(t_philo *philo, int id, int meals_eaten, t_p
     philo->id = id;
     philo->meals_eaten = meals_eaten;
     philo->first_philo = first_philo;
-    philo->fork_used = false;
     philo->state = idle;
+    philo->fork_lock = (pthread_mutex_t*)malloc(sizeof(pthread_mutex_t));
+    if (pthread_mutex_init(philo->fork_lock, NULL))
+        fatal_error("Failed to initialize mutex!\n");
+}
+
+void    free_philo(t_philo *philo)
+{
+    if (philo)
+    {
+        if (philo->fork_lock)
+        {
+            pthread_mutex_destroy(philo->fork_lock);
+            free (philo->fork_lock);
+        }
+        free (philo);
+    }
 }
 
 t_philo *initialize_philos(int nbr_philos)

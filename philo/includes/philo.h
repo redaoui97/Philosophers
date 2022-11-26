@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/25 10:39:48 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 10:50:08 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ enum state
 typedef struct s_data
 {
 	int				nbr_philos;
-	int     		time_to_die;
+	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				max_meals;
@@ -46,16 +46,16 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-    int					id;
-	int					meals_eaten;
-	bool				fork_used;
-	enum state			state;
-	long long			birth_time;
-	long long			last_time_ate;
-	pthread_t			thread_id;
-	struct s_philo		*first_philo;
-	struct s_philo		*next_philo;
-	struct s_philo		*previous_philo;
+    int				id;
+	int				meals_eaten;
+	enum state		state;
+	long long		birth_time;
+	long long		last_time_ate;
+	pthread_t		thread_id;
+	pthread_mutex_t	*fork_lock;
+	struct s_philo	*first_philo;
+	struct s_philo	*next_philo;
+	struct s_philo	*previous_philo;
 } t_philo;
 
 /*----------------------------------------*/
@@ -67,6 +67,10 @@ t_philo		*initialize_philos(int nbr_philos);
 void		test_initialized_data(t_philo *philos, int nbr_philos);
 int 		initialize_data(int argc, char **argv, t_data *data);
 void		pthread_initialization(t_data *data);
+
+/*Free data*/
+void		free_philo(t_philo *philo);
+void		destroy_data(t_data *data);
 
 /*Philosophers action functions*/
 void		*life_cycle(void *data);
