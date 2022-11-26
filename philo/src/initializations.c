@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 10:48:10 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:29:19 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,17 @@ void	pthread_initialization(t_data *data)
 
 void	detach_threads(t_data *data)
 {
-	(void)data;
+	int		i;
+	t_philo	*philo;
+
+	philo = data->philos;
+	while (i < data->nbr_philos)
+	{
+		if (pthread_detach(philo->thread_id))
+			fatal_error("Failed to detach thread error!\n");
+		philo = philo->next_philo;
+		i++;
+	}
 }
 
 int initialize_data(int argc, char **argv, t_data *data)
@@ -54,6 +64,7 @@ int initialize_data(int argc, char **argv, t_data *data)
 	initialize_data_attributs(argc, argv, data);
 	data->philos = initialize_philos(data->nbr_philos);
 	pthread_initialization(data);
+	detach_threads(data);
     return (EXIT_SUCCESS);
 }
 

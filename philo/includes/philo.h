@@ -6,7 +6,7 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 10:50:08 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:34:30 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_philo		*initialize_philos(int nbr_philos);
 void		test_initialized_data(t_philo *philos, int nbr_philos);
 int 		initialize_data(int argc, char **argv, t_data *data);
 void		pthread_initialization(t_data *data);
+void		detach_threads(t_data *data);
 
 /*Free data*/
 void		free_philo(t_philo *philo);
@@ -78,6 +79,9 @@ void		*life_cycle(void *data);
 /*Philosophers utils functions*/
 long long	get_time(void);
 long long	get_current_time(t_data *data);
+
+/*Monitoring functions*/
+void		monitoring(t_data *data);
 
 /*Error functions*/
 void		fatal_error (char *msg);
