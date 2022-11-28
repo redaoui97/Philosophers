@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_initialization.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 18:27:29 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 16:15:49 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/27 21:15:30 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ static void initialize_single_philo(t_philo *philo, int id, t_philo *first_philo
     philo->fork_lock = (pthread_mutex_t*)malloc(sizeof(pthread_mutex_t));
     if (pthread_mutex_init(philo->fork_lock, NULL))
         fatal_error("Failed to initialize mutex!\n");
+    philo->print_lock = (pthread_mutex_t*)malloc(sizeof(pthread_mutex_t));
+    if (pthread_mutex_init(philo->print_lock, NULL))
+        fatal_error("Failed to initialize mutex!\n");
 }
 
 void    free_philo(t_philo *philo)
@@ -63,7 +66,9 @@ void    free_philo(t_philo *philo)
         if (philo->fork_lock)
         {
             pthread_mutex_destroy(philo->fork_lock);
+            pthread_mutex_destroy(philo->print_lock);
             free (philo->fork_lock);
+            free (philo->print_lock);
         }
         free (philo);
     }
@@ -88,7 +93,7 @@ t_philo *initialize_philos(int nbr_philos, t_data *data)
             philo = philo->next_philo;
         i++;
     }
-    initialize_single_philo(philo, i, 0,first_philo);
+    initialize_single_philo(philo, i, first_philo, data);
     philo->next_philo = first_philo;
     first_philo->previous_philo = philo;
     return (first_philo);

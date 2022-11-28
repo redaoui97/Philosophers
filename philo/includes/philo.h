@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:13 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/26 16:28:21 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/28 02:36:57 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 	long long		last_time_ate;
 	pthread_t		thread_id;
 	pthread_mutex_t	*fork_lock;
+	pthread_mutex_t	*print_lock;
 	struct s_data	*data;
 	struct s_philo	*first_philo;
 	struct s_philo	*next_philo;
@@ -76,13 +77,18 @@ void		destroy_data(t_data *data);
 
 /*Philosophers action functions*/
 void		*life_cycle(void *data);
+void		print_action(t_philo *philo, char *action);
 
 /*Philosophers utils functions*/
 long long	get_time(void);
 long long	get_current_time(t_data *data);
+void		putdown_fork(t_philo *philo);
+void		pickup_fork(t_philo *philo);
+void		eat(t_philo *philo);
 
 /*Monitoring functions*/
 void		monitoring(t_data *data);
+void	finish(t_philo *philo, char *action);
 
 /*Error functions*/
 void		fatal_error (char *msg);

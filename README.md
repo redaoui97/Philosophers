@@ -26,7 +26,10 @@ A multicore CPU is a single integrated circuit that contains multiple core proce
 <li>How cores are interconnected: variety of bus architectures (how data is communicated between cores </li>
 <li>Isolation: includes Physical isolation (different cores cannot access the same physical hardware) and temporal isolation (insures that the execution of software on one core, does not impact the behavior of software running on another core)</li>
 </ul>
-### - Multicore systems and Multithreading? 
+
+### - Thread scheduling
+https://www.geeksforgeeks.org/thread-scheduling/
+
 
 ### - POSIX Threads (Pthreads)
 A good <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html">link</a> to understand how thread API work.
