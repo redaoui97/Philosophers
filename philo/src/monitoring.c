@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 11:31:55 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 04:32:56 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:30:56 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	finish(t_philo *philo, char *action)
 {
-		print_action(philo, action, 1);
-		exit(EXIT_SUCCESS);
+	print_action(philo, action, 1);
+	exit(EXIT_SUCCESS);
 }
 
-static int all_have_eaten(t_data *data)
+static int	all_have_eaten(t_data *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 	int		i;
 
 	i = 0;
@@ -40,10 +40,12 @@ void	monitoring(t_data *data)
 	t_philo			*philo;
 
 	philo = data->philos;
-	while(1)
+	while (1)
 	{
-		if (((get_current_time(data) - philo->last_time_ate)) >= data->time_to_die)
+		if (((get_current_time(data) - philo->last_time_ate))
+			>= data->time_to_die)
 		{
+			printf("hmm");
 			finish(philo, "has died");
 			break ;
 		}

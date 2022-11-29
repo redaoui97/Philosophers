@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/28 21:18:43 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:56:00 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static int	initialize_data_attributs(int argc, char **argv, t_data *data)
 {
+	if (ft_atoi(argv[1]) == -1 || ft_atoi(argv[2]) == -1
+		|| ft_atoi(argv[3]) == -1 || ft_atoi(argv[4]) == -1)
+		return (0);
+	if (argc == 6 && ft_atoi(argv[5]) == -1)
+		return (0);
 	data->nbr_philos = ft_atoi(argv[1]);
 	if (!data->nbr_philos)
 		return (0);
@@ -25,14 +30,14 @@ static int	initialize_data_attributs(int argc, char **argv, t_data *data)
 	else
 		data->max_meals = -1;
 	data->all_alive = 1;
-	return(1);
+	return (1);
 }
 
 int	pthread_initialization(t_data *data)
 {
 	int		i;
 	t_philo	*philo;
-	
+
 	i = 0;
 	data->program_start_time = get_time();
 	philo = data->philos;
@@ -53,6 +58,7 @@ int	detach_threads(t_data *data)
 	t_philo	*philo;
 
 	philo = data->philos;
+	i = 0;
 	while (i < data->nbr_philos)
 	{
 		if (pthread_detach(philo->thread_id))
@@ -76,4 +82,3 @@ int	initialize_data(int argc, char **argv, t_data *data)
 		return (0);
 	return (1);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 04:13:35 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 16:31:36 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,26 @@ void	print_action(t_philo *philo, char *action, int finish)
 {
 	pthread_mutex_lock(philo->print_lock);
 	if (action)
-		printf("%lld    %d      %s\n",get_current_time(philo->data), philo->id + 1, action);
+		printf("%lld    %d      %s\n", get_current_time(philo->data),
+			philo->id + 1, action);
 	else
-		printf("%lld    all philosophers have eaten", get_current_time(philo->data));
+		printf("%lld    all philosophers have eaten",
+			get_current_time(philo->data));
 	if (!finish)
 		pthread_mutex_unlock(philo->print_lock);
 }
 
-
 void	putdown_fork(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->fork_lock) != 0)
-		fatal_error("Failed to unlock mutex!\n");
-	if (pthread_mutex_unlock(philo->next_philo->fork_lock) != 0)
-		fatal_error("Failed to unlock mutex!\n");
+	pthread_mutex_unlock(philo->fork_lock);
+	pthread_mutex_unlock(philo->next_philo->fork_lock);
 }
 
 void	pickup_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->fork_lock) != 0)
-		fatal_error("Failed to lock mutex!\n");
+	pthread_mutex_lock(philo->fork_lock);
 	print_action(philo, "has taken a fork", 0);
-	if (pthread_mutex_lock(philo->next_philo->fork_lock) != 0)
-        fatal_error("Failed to lock mutex!\n");
+	pthread_mutex_lock(philo->next_philo->fork_lock);
 	print_action(philo, "has taken a fork", 0);
 }
 
@@ -55,8 +52,8 @@ void	eat(t_philo *philo)
 void	*life_cycle(void *philosopher)
 {
 	t_philo	*philo;
-	
-	philo = (t_philo*)philosopher;
+
+	philo = (t_philo *)philosopher;
 	while (1)
 	{
 		eat(philo);

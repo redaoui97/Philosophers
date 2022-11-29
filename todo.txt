@@ -6,3 +6,4 @@ Experiment pthread functions:
 +Test exit on thread and detached threads
 //organize files inside directories 
 //gettimeofday and milisecond vs microsecond
+data race reading last time ate and nbr of meals eaten

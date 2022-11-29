@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+         #
+#    By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 16:21:43 by rnabil            #+#    #+#              #
-#    Updated: 2022/11/26 11:35:23 by rnabil           ###   ########.fr        #
+#    Updated: 2022/11/29 17:20:13 by rnabil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Main_functions = $(addprefix src/, main errors philo philo_utils utils \
+Main_functions = $(addprefix src/, main philo philo_utils utils \
 	initializations philo_initialization monitoring)
 OBJS_main = $(Main_functions:=.o)
 
 NAME  = philo
-CC	  = gcc
-FLAGS = -g -Wall -Wextra -Werror
+CC	  = cc
+FLAGS = -g -Wall -Wextra -Werror 
 
 .Phony: all clean fclean re bonus
 
