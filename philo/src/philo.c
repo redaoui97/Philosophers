@@ -6,7 +6,7 @@
 /*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 16:31:36 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 22:29:29 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_action(t_philo *philo, char *action, int finish)
 		printf("%lld    %d      %s\n", get_current_time(philo->data),
 			philo->id + 1, action);
 	else
-		printf("%lld    all philosophers have eaten",
+		printf("%lld    all philosophers have eaten\n",
 			get_current_time(philo->data));
 	if (!finish)
 		pthread_mutex_unlock(philo->print_lock);
@@ -42,7 +42,7 @@ void	pickup_fork(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	pickup_fork(philo);
-	philo->last_time_ate = get_current_time(philo->data);
+	philo->last_time_ate = get_current_time(philo->data) + 10;
 	philo->meals_eaten += 1;
 	print_action(philo, "is eating", 0);
 	usleep(philo->data->time_to_eat * 1000);

@@ -6,7 +6,7 @@
 /*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 15:56:00 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 23:38:28 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	pthread_initialization(t_data *data)
 	{
 		if (pthread_create(&(philo->thread_id), NULL, life_cycle, philo))
 			return (0);
-		usleep(100);
+		usleep(50);
 		philo = philo->next_philo;
 		i++;
 	}

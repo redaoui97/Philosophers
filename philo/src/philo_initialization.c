@@ -6,7 +6,7 @@
 /*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 18:27:29 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 16:29:36 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:51:59 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	initialize_single_philo(t_philo *philo, int id,
 	philo->first_philo = first_philo;
 	philo->state = idle;
 	philo->data = data;
+	philo->last_time_ate = 0;
 	philo->fork_lock = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
 	if (pthread_mutex_init(philo->fork_lock, NULL))
 		return (0);
