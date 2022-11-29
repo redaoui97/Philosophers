@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_initialization.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 18:27:29 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/28 21:57:00 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:20:50 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static t_philo *allocate_philo(t_philo *previous_philo)
     new->next_philo = NULL;
     new->first_philo = NULL; 
     new->meals_eaten = -1;
+    new->last_time_ate = 0;
     //other inits here
     return (new);
 }

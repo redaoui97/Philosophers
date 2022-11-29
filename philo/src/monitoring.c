@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 11:31:55 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/29 04:32:56 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:21:38 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	finish(t_philo *philo, char *action)
 {
 		print_action(philo, action, 1);
-		exit(EXIT_SUCCESS);
 }
 
 static int all_have_eaten(t_data *data)

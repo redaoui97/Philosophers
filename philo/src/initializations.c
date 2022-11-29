@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
+/*   By: rnabil <rnabil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:49:14 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/28 21:18:43 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:21:06 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	detach_threads(t_data *data)
 	int		i;
 	t_philo	*philo;
 
+	i = 0;
 	philo = data->philos;
 	while (i < data->nbr_philos)
 	{
