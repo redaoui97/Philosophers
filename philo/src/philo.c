@@ -6,17 +6,21 @@
 /*   By: rnabil < rnabil@student.1337.ma >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:21:05 by rnabil            #+#    #+#             */
-/*   Updated: 2022/11/27 21:24:10 by rnabil           ###   ########.fr       */
+/*   Updated: 2022/11/29 04:13:35 by rnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	print_action(t_philo *philo, char *action)
+void	print_action(t_philo *philo, char *action, int finish)
 {
 	pthread_mutex_lock(philo->print_lock);
-	printf("%lld    %d      %s\n",get_current_time(philo->data), philo->id + 1, action);
-	pthread_mutex_unlock(philo->print_lock);
+	if (action)
+		printf("%lld    %d      %s\n",get_current_time(philo->data), philo->id + 1, action);
+	else
+		printf("%lld    all philosophers have eaten", get_current_time(philo->data));
+	if (!finish)
+		pthread_mutex_unlock(philo->print_lock);
 }
 
 
@@ -32,10 +36,10 @@ void	pickup_fork(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->fork_lock) != 0)
 		fatal_error("Failed to lock mutex!\n");
-	print_action(philo, "has taken a fork");
+	print_action(philo, "has taken a fork", 0);
 	if (pthread_mutex_lock(philo->next_philo->fork_lock) != 0)
         fatal_error("Failed to lock mutex!\n");
-	print_action(philo, "has taken a fork");
+	print_action(philo, "has taken a fork", 0);
 }
 
 void	eat(t_philo *philo)
@@ -43,7 +47,7 @@ void	eat(t_philo *philo)
 	pickup_fork(philo);
 	philo->last_time_ate = get_current_time(philo->data);
 	philo->meals_eaten += 1;
-	print_action(philo, "is eating");
+	print_action(philo, "is eating", 0);
 	usleep(philo->data->time_to_eat * 1000);
 	putdown_fork(philo);
 }
@@ -56,9 +60,9 @@ void	*life_cycle(void *philosopher)
 	while (1)
 	{
 		eat(philo);
-		print_action(philo, "is sleeping");
+		print_action(philo, "is sleeping", 0);
 		usleep(philo->data->time_to_sleep * 1000);
-		print_action(philo, "is thinking");
+		print_action(philo, "is thinking", 0);
 	}
 	return (NULL);
 }
